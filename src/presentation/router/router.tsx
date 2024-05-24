@@ -61,9 +61,9 @@ export const menuRoutes = [
   // },
   {
     to: "/assistant",
-    icon: "fa-solid fa-user",
-    title: "Asistente",
-    description: "Información del asistente",
+    icon: "fa-regular fa-scale-balanced",
+    title: "Asistente Juridico",
+    description: "Especialista en contratos",
     component: <ConversationAssistantPage />,
   },
 ];
