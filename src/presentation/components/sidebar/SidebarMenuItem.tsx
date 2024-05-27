@@ -16,7 +16,7 @@ export const SidebarMenuItem: FC<SidebarMenuProps> = ({ to, icon, title, descrip
       to={to}
       className={({ isActive }) =>
         isActive
-          ? "flex justify-center items-center bg-[#0D0D0D] rounded-md p-2 transition-colors"
+          ? "flex justify-center items-center  rounded-md p-2 transition-colors"
           : "flex justify-center items-center hover:bg-gray-900 rounded-md p-2 transition-colors"
       }
     >
@@ -24,8 +24,8 @@ export const SidebarMenuItem: FC<SidebarMenuProps> = ({ to, icon, title, descrip
       <div className="flex flex-col flex-grow">
         {showSidebar && (
           <>
-            <span className="text-white text-lg font-semibold">{title}</span>
-            <span className="text-gray-400 text-sm ">{description}</span>
+            <span className="text-white text-lg font-semibold  whitespace-nowrap">{title}</span>
+            <span className="text-gray-400 text-sm  whitespace-nowrap ">{description}</span>
           </>
         )}
       </div>
