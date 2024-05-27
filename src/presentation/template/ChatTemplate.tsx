@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { ChatInput, GptMessages, TypingLoader, UserMessages } from "../../components";
+import { ChatInput, GptMessages, TypingLoader, UserMessages } from "../components";
 
 interface Message {
   text: string;
   isGpt: boolean;
 }
 
-export const ConversationAssistantPage = () => {
+export const ChatTemplate = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
 
