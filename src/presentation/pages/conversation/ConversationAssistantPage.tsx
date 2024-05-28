@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from "react";
 import { ChatInput, GptMessages, TypingLoader, UserMessages } from "../../components";
-import { createThreadUseCase } from "../../../core/use-cases";
+import { createThreadUseCase, postQuestionUseCase } from "../../../core/use-cases";
 
 interface Message {
   text: string;
@@ -26,9 +27,13 @@ export const ConversationAssistantPage = () => {
   }, []);
 
   const handlePost = async (text: string) => {
+    if (!threadId) return;
+
     setIsLoading(true);
 
     setMessages((prev) => [...prev, { text: text, isGpt: false }]);
+
+    const replies = await postQuestionUseCase(threadId, text);
 
     setIsLoading(false);
   };
