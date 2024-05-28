@@ -3,15 +3,14 @@ import { FC } from "react";
 
 interface Props {
   text: string;
-  img?: string;
 }
 
-export const GptMessages: FC<Props> = ({ text, img }) => {
+export const GptMessages: FC<Props> = ({ text }) => {
   return (
     <div className="col-start-1 col-end-9 rounded-lg">
       <div className="flex flex-row items-start">
         <img
-          src={img}
+          src="../../../../public/images/assistantImage2.png"
           alt="assistant"
           className=" flex size-10 cursor-pointer items-center justify-center rounded-full hover:opacity-50"
         />
