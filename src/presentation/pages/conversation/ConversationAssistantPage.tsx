@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChatInput, GptMessages, TypingLoader, UserMessages } from "../../components";
+import { createThreadUseCase } from "../../../core/use-cases";
 
 interface Message {
   text: string;
@@ -9,6 +10,20 @@ interface Message {
 export const ConversationAssistantPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
+
+  const [threadId, setThreadId] = useState<string>();
+
+  useEffect(() => {
+    const threadId = localStorage.getItem("threadId");
+    if (threadId) {
+      setThreadId(threadId);
+    } else {
+      createThreadUseCase().then((id) => {
+        setThreadId(id);
+        localStorage.setItem("threadId", id);
+      });
+    }
+  }, []);
 
   const handlePost = async (text: string) => {
     setIsLoading(true);
@@ -42,7 +57,7 @@ export const ConversationAssistantPage = () => {
           )}
         </div>
       </div>
-      <ChatInput onSendMessage={handlePost} placeholder="Hola mundo" />
+      <ChatInput onSendMessage={handlePost} placeholder="Escriba aqui su consulta..." />
     </div>
   );
 };
